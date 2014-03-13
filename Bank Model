@@ -1,7 +1,7 @@
 #!usr/env/python
-#Modeling a bank for practice //Kyle Atkins\\
+#Modeling a bank for practice Kyle Atkins
 
-from random import randint # random wont import....?!?!?
+from random import randint
 
 class Bank(object):
     def __init__(self, name):
@@ -37,8 +37,7 @@ class User(object):
     def __init__(self, name):
         self.name = name
 
-#Testing, is there a better way to test programs? importing to console?
-
+#Testing variables
 
 bank = Bank('TC Bank')
 
