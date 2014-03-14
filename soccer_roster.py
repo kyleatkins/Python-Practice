@@ -1,5 +1,5 @@
 #!usr/env/python
-#Modeling a soccer team roster
+#Modeling a soccer team with substitutions
 
 #Players stored in dictionary {Name:Numbers}
 players = {}
@@ -23,12 +23,6 @@ class Players(object):
         self.number = number
         self.position = position
         players[name] = number
-        print "Added %s to the team!" % name
-
-#there has to be a better way to add positions. Recursive call to addPlayer????
-    def Positions(self, name, position):
-        self.name = name
-        self.position = position
 
         if position == 'forward':
             forward.append(name)
@@ -45,24 +39,21 @@ class Players(object):
         else:
             print 'Only forward, midfield, defense, goalie accepted'
 
-
+        print "Added %s to the team!" % name
 
 
 Barcelona = Team('Barcelona')
 this = Players()
-
-
 
 this.addPlayer('Messi', 10, 'forward')
 this.addPlayer('Neymar', 11, 'forward')
 this.addPlayer('Song', 9, 'midfield')
 this.addPlayer('Valdes', 1, 'goalie')
 this.addPlayer('Pique', 25, 'defense')
+this.addPlayer('Pedro', 8, 'forward')
 
 print players
 
-this.Positions('Messi', 'forward')
-this.Positions('Valdes', 'goalie')
 print 'Forward Players'
 print forward
 print 'Midfield Players'
