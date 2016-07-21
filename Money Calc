@@ -1,0 +1,46 @@
+#!/usr/bin/python
+
+#class Dollars(object):
+#    def __init__(self,twenty,ten,five,one):
+#        self.twenty = 20
+#        self.ten = 10
+#        self.five = 5
+#        self.one = 1
+
+twenties = 0
+tens = 0
+fives = 0
+ones = 0
+
+Twenties = 0
+Tens = 0
+Fives = 0
+Ones = 0
+
+while True:
+    value = int(input('How much money are you converting? '))
+    while value >= 20:
+        twenties += 1
+        value -= 20
+        Twenties += 1
+    print(twenties,'twenties')
+    while value >= 10:
+        tens += 1
+        value -= 10
+        Tens += 1
+    print(tens,'tens')
+    while value >= 5:
+        fives += 1
+        value -= 5
+        Fives += 1
+    print(fives,'fives')
+    while value >= 1:
+        ones += 1
+        value -= 1
+        Ones += 1
+    print(ones,'ones')
+else:
+    print(Twenties)
+    print(Tens)
+    print(Fives)
+    print(Ones)
