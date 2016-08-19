@@ -1,0 +1,118 @@
+#!/usr/bin/python
+#Kyle Atkins CoLove LLC
+single = input('Filing Status: Enter 1 for Single and 2 for Married: ')
+withhold = input('Enter the Employees Withholdings: ')
+payroll = input('Enter amount of weekly payroll: ')
+#create variable namespace
+fedsoc = 0
+fedmed = 0
+fedincometax = 0
+#Medicare Tax Rate is 1.45%
+medicaretax = 0.0145
+#Social Security FICA Tax is 6.2%
+sstax = 0.062
+#Colorado percentage withholding is 4.63%
+statetax = 0.0463
+#set withholding amounts
+if withhold == 0:
+    withhold = 0
+elif withhold == 1:
+    withhold = 77
+elif withhold == 2:
+    withhold = 154
+elif withhold == 3:
+    withhold = 231
+elif withhold == 4:
+    withhold = 308
+else:
+    pass
+
+#calculate single employee with paycheck below tax threshold of $44 weekly
+if single == 1 and payroll <= 44:
+    print '$0 State Taxes'
+    print 'Federal Social Security Tax: '
+    fedsoc = (payroll * sstax)
+    print format(fedsoc, '.2f')
+    print 'Federal Medicare Tax: '
+    fedmed = (payroll * medicaretax)
+    print format(fedmed, '.2f')
+    print 'Total Federal Taxes are: '
+    fedtax = fedincometax + fedsoc + fedmed
+    print format(fedtax, '.2f')
+    taxes = statetax + fedsoc + fedmed
+    print format(taxes, '.2f')
+    print 'Total Taxes: '
+    taxes = statetax + fedsoc + fedmed
+    print format(taxes, '.2f')
+    print 'Employee to be paid: '
+    print payroll - statetax - fedsoc - fedmed
+#calculate single employee with paycheck greater than $44 weekly
+elif single == 1 and payroll >= 44:
+    #Federal Income Tax
+    print 'Federal Income Tax @10%'
+    fedincometax = (payroll - withhold) * .10
+    print format(fedincometax, '.2f')
+    #Federal Social Security Tax
+    print 'Federal Social Security Tax: '
+    fedsoc = (payroll - withhold) * sstax
+    print format(fedsoc, '.2f')
+    #Federal Medicare Tax
+    print 'Federal Medicare Tax: '
+    fedmed = (payroll - withhold) * medicaretax
+    print format(fedmed, '.2f')
+    #State Taxes
+    print 'Total State Taxes: '
+    #remove the withholding amount $44 from the taxable amount
+    statetax = (payroll - withhold) * statetax
+    print format(statetax, '.2f')
+    print 'Total Federal Taxes: '
+    fedtax = fedincometax + fedsoc + fedmed
+    print format(fedtax, '.2f')
+    print 'Total Taxes: '
+    taxes = fedincometax + statetax + fedsoc + fedmed
+    print format(taxes, '.2f')
+    print 'Employee to be paid: '
+    total = (payroll - taxes)
+    print format(total,'.2f')
+else:
+    pass
+#calculate Married employee with amount below tax threshold of $165
+if single == 2 and payroll <= 165:
+    print '$0 State Tax'
+    print 'Federal Social Security Tax: '
+    fedsoc = (payroll - withhold) * sstax
+    print format(fedsoc, '.2f')
+    print 'Federal Medicare Tax: '
+    fedmed = (payroll - withhold) * medicaretax
+    print format(fedmed, '.2f')
+    print 'Total Federal Taxes: '
+    fedtax = fedincometax + fedsoc + fedmed
+    print format(fedtax, '.2f')
+    print 'Employee to be paid: '
+    print (payroll - fedtax)
+elif single == 2 and payroll >= 165:
+    #Federal Income Tax
+    print 'Federal Income Tax @10%'
+    fedincometax = 0
+    statetax = 0
+    print format(fedincometax, '.2f')
+    print 'Federal Social Security Tax: '
+    fedsoc = (payroll - withhold) * sstax
+    print format(fedsoc, '.2f')
+    print 'Federal Medicare Tax: '
+    fedmed = (payroll - withhold) * medicaretax
+    print format(fedmed, '.2f')
+    print 'Total State Taxes: '
+    statetax = (payroll - withhold) * statetax
+    print format(statetax, '.2f')
+    print 'Total Federal Taxes: '
+    fedtax = fedincometax + fedsoc + fedmed
+    print format(fedtax, '.2f')
+    print 'Total Taxes:'
+    taxes = fedincometax + statetax + fedsoc + fedmed
+    print format(taxes, '.2f')
+    print 'Employee to be paid: '
+    paid = (payroll - taxes)
+    print format(paid, '.2f')
+else:
+    pass
